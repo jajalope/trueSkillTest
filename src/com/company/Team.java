@@ -1,10 +1,10 @@
 package com.company;
 
 public class Team {
-    public double mu;
-    public double sigma;
-    public double trueMu = mu-(sigma*3);
-    public String name;
+    double mu;
+    double sigma;
+    private double trueMu = mu-(sigma*3);
+    String name;
 
     Team (String teamName){
         name = teamName;
@@ -12,7 +12,7 @@ public class Team {
         sigma = 50/3;
     }
 
-    public void setMu(double muVal) {
+    void setMu(double muVal) {
         this.mu = muVal;
         this.trueMu = mu-(sigma*3);
     }
@@ -21,7 +21,7 @@ public class Team {
         return mu;
     }
 
-    public void setSigma(double sigma) {
+    void setSigma(double sigma) {
         this.sigma = sigma;
         this.trueMu = mu-(sigma*3);
     }

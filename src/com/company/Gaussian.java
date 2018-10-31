@@ -3,17 +3,17 @@ package com.company;
 public class Gaussian {
 
     // return pdf(x) = standard Gaussian pdf
-    public static double pdf(double x) {
+    private static double pdf(double x) {
         return Math.exp(-x*x / 2) / Math.sqrt(2 * Math.PI);
     }
 
     // return pdf(x, mu, signma) = Gaussian pdf with mean mu and stddev sigma
-    public static double pdf(double x, double mu, double sigma) {
+    private static double pdf(double x, double mu, double sigma) {
         return pdf((x - mu) / sigma) / sigma;
     }
 
     // return cdf(z) = standard Gaussian cdf using Taylor approximation
-    public static double cdf(double z) {
+    static double cdf(double z) {
         if (z < -8.0) return 0.0;
         if (z >  8.0) return 1.0;
         double sum = 0.0, term = z;
@@ -25,12 +25,12 @@ public class Gaussian {
     }
 
     // return cdf(z, mu, sigma) = Gaussian cdf with mean mu and stddev sigma
-    public static double cdf(double z, double mu, double sigma) {
+    private static double cdf(double z, double mu, double sigma) {
         return cdf((z - mu) / sigma);
     }
 
     // Compute z such that cdf(z) = y via bisection search
-    public static double inverseCDF(double y) {
+    private static double inverseCDF(double y) {
         return inverseCDF(y, 0.00000001, -8, 8);
     }
 
