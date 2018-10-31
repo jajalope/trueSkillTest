@@ -8,8 +8,7 @@ import java.lang.Math;
 
 public class Main {
 
-    public static ArrayList<Team> teams = new ArrayList<>();
-    public double C;
+    private static ArrayList<Team> teams = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         double beta = 8;
@@ -77,7 +76,7 @@ public class Main {
         }
         gamePicker("A", "B");
     }
-    public static void gamePicker(String team1Name, String team2Name) {
+    private static void gamePicker(String team1Name, String team2Name) {
         if ((teamFinder(team1Name).mu/(teamFinder(team1Name).mu + teamFinder(team2Name).mu) * 100) >=50.0 ) {
             System.out.println(team1Name + " has a " + (teamFinder(team1Name).mu/(teamFinder(team1Name).mu + teamFinder(team2Name).mu) * 100) + " percent chance of winning");
         }
@@ -88,7 +87,7 @@ public class Main {
             System.out.println("The game will likely be a tie");
         }
     }
-    public static Team teamFinder(String teamName) {
+    private static Team teamFinder(String teamName) {
         for (Team t:teams) {
             if (t.name.equals(teamName)) {
                 return t;
@@ -98,22 +97,21 @@ public class Main {
     }
 
     //general normal distribution
-    public static double gnd(double x, double mu, double sigma) {
+    /*public static double gnd(double x, double mu, double sigma) {
         return ((1.0/sigma) * (snd((x-mu)/sigma)));
-    }
-
+    }*/
     //standard normal distribution
-    public static double snd(double x) {
+    private static double snd(double x) {
         return ((1.0/(Math.sqrt(2.0 * Math.PI))) * (Math.pow(Math.E, -0.5 * Math.pow(x, 2.0))));
     }
 
     //Mean Additive Truncated Gaussian Function: “v” (non-draw)
-    public static double v(double t) {
+    private static double v(double t) {
         return (snd(t))/ Gaussian.cdf(t);
     }
 
     //Variance Multiplicative Function: “w” (non-drawn)
-    public static double w(double t) {
+    private static double w(double t) {
         return v(t) * (v(t) + t);
     }
 }
